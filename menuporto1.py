@@ -18,16 +18,43 @@ def tela1():
     time.sleep(10)
     exibirMenu()
 
+mes = []
+dia = []
 def tela2():
     print('====================== AGENDAR MANUTENÇÃO ======================')
     print('[1] - Exibir minhas manutenções agendadas')
     print('[2] - Agendar uma manutenção')
     print('[3] - Cancelar uma manutenção')
     print('[4] - Retornar ao menu principal')
-    problema = input('Escolha uma opção: ')
-    match problema:
+    escolha = input('Escolha uma opção: ')
+
+    match escolha:
         case '1':
-            print('calma calabreso')
+            print('As manutenções agendadas são, respectivamente em cada lista:')
+            print('Dia: ', dia)
+            print ('Mês: ', mes)
+            print('Você retornará ao menu anterior em 10 segundos...')
+            time.sleep(10)
+            tela2()
+        case '2':
+            escolhames = input('Escolha um mês (1-12): ')
+            escolhadia = input('Escolha um dia do mês (ex: 1, 16, 30...): ')
+            mes.append(escolhames)
+            dia.append(escolhadia)
+            print(f'Consulta agendada para o dia {escolhadia}/{escolhames}!')
+            time.sleep(5)
+            tela2()
+        case '3':
+            print('As manutenções agendadas são, respectivamente em cada lista:')
+            print('Dia: ', dia)
+            print ('Mês: ', mes)
+            deletar = int(input('Digite o número da manutenção que deseja deletar: '))
+            i = deletar - 1
+            del(dia[i])
+            del(mes[i])
+            print('Manutenção cancelada!')
+            time.sleep(5)
+            tela2()
         case '4':
             exibirMenu()
         case _:
